@@ -1,12 +1,11 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-// Get the root element
-const container = document.getElementById("root");
-
-// Create a root
-const root = createRoot(container!);
-
-// Render the app
-root.render(<App />);
+if (typeof document !== 'undefined') {
+  const container = document.getElementById('root');
+  if (container) {
+    const root = createRoot(container);
+    root.render(<App />);
+  }
+}

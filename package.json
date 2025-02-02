@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "start": "pnpm build && serve dist -l 8000",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint 'src/**/*.{ts,tsx}' --fix",
+    "fix": "eslint 'src/**/*.{ts,tsx}' --fix",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,jsx,css,json}'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
