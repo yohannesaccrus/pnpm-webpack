@@ -1,9 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App';
+import App from '@base/App';
 
-import './styles/index.scss';
+import '@styles/index.scss';
 
 if (typeof document !== 'undefined') {
   const container = document.getElementById('root');

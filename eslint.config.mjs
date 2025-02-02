@@ -36,6 +36,9 @@ export default [
       react: {
         version: 'detect',
       },
+      'import/resolver': {
+        typescript: {}, // TS absoulte import resolver
+      },
     },
   },
   prettier,
