@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PropsFormField } from '@base/components/Form/types';
 
 import Layout from '@components/Layout';
 import Form from '@components/Form';
 
+import { setFormData } from '@store/formState';
+
 const CardAdd: React.FC = () => {
-  const [formData, setFormData] = useState<{ [key: string]: string } | null>(
-    null
-  );
+  const dispatch = useDispatch();
+  const formData = useSelector((state: any) => state.form.formData);
 
   const formFields: PropsFormField[] = [
     {
@@ -26,7 +28,7 @@ const CardAdd: React.FC = () => {
   ];
 
   const handleFormSubmit = (data: { [key: string]: string }) => {
-    setFormData(data);
+    dispatch(setFormData(data));
   };
 
   return (
