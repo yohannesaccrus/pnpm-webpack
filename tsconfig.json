@@ -11,11 +11,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
+    "lib": ["dom", "esnext"],
     "baseUrl": "./",
     "paths": {
       "@base/*": ["src/*"],
       "@styles/*": ["src/styles/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@components/*": ["src/components/*"]
     }
   },
   "include": ["src"]

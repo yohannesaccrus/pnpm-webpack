@@ -1,0 +1,10 @@
+$primary-color: #3498db;
+
+.header {
+  background: $primary-color;
+  position: sticky;
+  top:0;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}

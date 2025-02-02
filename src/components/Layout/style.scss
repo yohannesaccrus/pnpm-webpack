@@ -1,0 +1,10 @@
+$max-width: 1000px;
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+
+  .content {
+    padding: .5rem;
+  }
+}
