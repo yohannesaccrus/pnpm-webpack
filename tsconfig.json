@@ -15,11 +15,12 @@
     "baseUrl": "./",
     "paths": {
       "@base/*": ["src/*"],
+      "@assets/*": ["src/static/assets/*"],
       "@styles/*": ["src/styles/*"],
       "@pages/*": ["src/pages/*"],
       "@components/*": ["src/components/*"],
       "@store/*": ["src/store/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "extension.d.ts"]
 }

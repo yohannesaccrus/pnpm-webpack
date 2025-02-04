@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Header from '@components/Header';
-import Footer from '@components/Footer';
 
 import { PropsLayoutComp } from '@components/Layout/types';
 
@@ -12,7 +11,6 @@ const Layout = ({ children }: PropsLayoutComp) => {
     <div className="container">
       <Header />
       <div className="content">{children}</div>
-      <Footer />
     </div>
   );
 };

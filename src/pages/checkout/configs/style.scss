@@ -1,0 +1,174 @@
+.card {
+  background-color: #fff;
+}
+
+.card {
+  &.info-credit {
+    section {
+      &.tips {
+        display: flex;
+        gap: .8rem;
+        padding: 1rem;
+
+        .icon {
+          svg {
+            color: #30B566;
+            width: 1.3rem;
+            height: 1.3rem;
+          }
+        }
+
+        .caption {
+          p {
+            color: #57606f;
+            font-weight: 400;
+            font-size: .8rem;
+
+            &.title {
+              color: #30B566;
+              font-weight: 500;
+              margin-bottom: .2rem;
+              font-size: .9rem;
+            }
+          }
+        }
+      }
+
+      &.amount {
+        padding: .5rem .5rem 1rem .5rem;
+        text-align: center;
+
+        .price {
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          margin-top: .5rem;
+        }
+
+        p {
+          font-weight: 400;
+          color: #57606f;
+        }
+
+        h4 {
+          margin-right: .2rem;
+          font-weight: 500;
+        }
+
+        h1 {
+          font-weight: 500;
+        }
+      }
+
+      &.fee {
+        padding: 1rem;
+        border-top: .5px solid rgba($color: #57606f, $alpha: .2);
+
+        h4 {
+          font-weight: 400;
+          opacity: .5;
+        }
+      }
+    }
+  }
+
+  &.form-details {
+    margin-top: 1rem;
+
+    section {
+      &.title {
+        padding: .8rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h4 {
+          font-weight: 500;
+          opacity: .8;
+        }
+
+        .providers {
+          display: flex;
+          gap: .7rem;
+
+          img {
+            height: 1.6rem;
+            filter: grayscale(100%);
+          }
+        }
+
+      }
+
+      &.card-detail {
+        padding: 0 .8rem .8rem .8rem;
+      }
+    }
+  }
+
+  &.info-deduct {
+    background-color: #f5f5f5;
+    padding: .8rem;
+    padding-bottom: 10vh;
+
+    section {
+      p {
+        opacity: .5;
+        line-height: 1.3rem;
+        font-size: .8rem;
+      }
+    }
+  }
+
+  &.form-submit {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: .8rem;
+
+    section {
+      &.checkout {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: .8rem;
+
+        .caption {
+          text-align: right;
+
+          p {
+            font-size: .8rem;
+            margin-bottom: .1rem;
+          }
+
+          h3 {
+            color: #EE4D2D;
+            font-weight: 500;
+
+            span {
+              font-size: 1rem;
+              margin-right: -.2rem;
+            }
+          }
+        }
+
+        .action {
+          button {
+            color: rgba($color: #000000, $alpha: .5);
+            width: 35vw;
+            height: 3rem;
+            border: none;
+            outline: none;
+            border-radius: .3rem;
+            transition: all .5s ease;
+
+            &.active {
+              color: #fff;
+              background-color: #EE4D2D;
+            }
+          }
+        }
+      }
+    }
+  }
+}

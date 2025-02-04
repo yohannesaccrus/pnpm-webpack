@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 
 import React from 'react';
+import clsx from 'clsx';
 
 import { PropsFormField } from '@components/Form/types';
 
@@ -30,6 +31,7 @@ const FieldInput = ({
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      className={clsx('field-input', value && 'filled')}
     />
   );
 };

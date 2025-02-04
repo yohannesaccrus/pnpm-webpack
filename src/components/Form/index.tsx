@@ -1,37 +1,54 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import clsx from 'clsx';
+
+import { setError } from '@store/formState';
+
 import { PropsFormComp, PropsFormField } from '@components/Form/types';
 
 import Input from '@components/Form/Fields/Input';
+import Divide from '@components/Form/Fields/Divide';
+import Title from '@components/Form/Fields/Title';
+import FieldIcon from '@components/Form/Fields/Icon';
 
-const Form = ({ schema, onSubmit }: PropsFormComp) => {
+import '@components/Form/style.scss';
+
+const Form = ({ schema, hideSubmit, onSubmit }: PropsFormComp) => {
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState(
     schema?.reduce(
       (acc, field) => {
-        acc[field.name] = field.initialValue || '';
+        acc[field.name || ''] = field.initialValue || '';
         return acc;
       },
       {} as { [key: string]: string }
     )
   );
-  const [error, setError] = useState<string | null>(null);
+
+  const convertRemoveEmptyKey = (obj: { [key: string]: string }) => {
+    for (let key in obj) {
+      if (key === '') {
+        delete obj[key];
+      }
+    }
+    return obj;
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+    dispatch(setError('An error occurred while submitting the form.'));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     if (formData && onSubmit) {
       e.preventDefault();
-      if (Object.values(formData).some((value) => value.trim() === '')) {
-        setError('Please fill in all fields.');
-        return;
-      }
-      setError(null);
-      onSubmit(formData);
+      onSubmit(convertRemoveEmptyKey(formData));
+      console.log(convertRemoveEmptyKey(formData));
     }
   };
 
@@ -44,16 +61,22 @@ const Form = ({ schema, onSubmit }: PropsFormComp) => {
           return (
             <Input
               type={field.type}
-              id={field.name}
-              name={field.name}
-              value={formData[field.name] || ''}
-              placeholder={field.placeholder}
+              id={field.name || ''}
+              name={field.name || ''}
+              value={formData[field.name || ''] || ''}
+              placeholder={field.placeholder || ''}
               onChange={handleChange}
             />
           );
+        case 'divide':
+          return <Divide />;
+        case 'title':
+          return (
+            <Title caption={field.titleCaption} initial={field.titleInitial} />
+          );
         case 'custom':
           return field.renderCustomInput
-            ? field.renderCustomInput(formData[field.name], handleChange)
+            ? field.renderCustomInput(formData[field.name || ''], handleChange)
             : null;
         default:
           return <input type="text" id={field.name} name={field.name} />;
@@ -63,18 +86,36 @@ const Form = ({ schema, onSubmit }: PropsFormComp) => {
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
-      {error && <p className="error">{error}</p>}
+      {/* {error && <p className="error">{error}</p>} */}
 
       {schema?.map((field: PropsFormField) => (
-        <div key={field.name} className="form-group">
-          <label htmlFor={field.name}>{field.label}</label>
+        <div
+          key={field.name}
+          className={clsx(
+            'form-group',
+            field.type,
+            field.fieldLast && 'last',
+            `width-${field.fieldWidth}`
+          )}
+        >
           {renderInput(field)}
+          {field.fieldLabel && (
+            <label htmlFor={field.name} className="field-label">
+              {field.fieldLabel}
+            </label>
+          )}
+          {field.fieldIcon && <FieldIcon icon={field.fieldIcon} />}
         </div>
       ))}
-
-      <button type="submit" className="submit-btn">
-        Submit
-      </button>
+      {onSubmit && (
+        <button
+          type="submit"
+          className={clsx('submit-btn', hideSubmit && 'hide')}
+          id="submit"
+        >
+          Submit
+        </button>
+      )}
     </form>
   );
 };

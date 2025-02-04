@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface FormState {
   formData: { [key: string]: string } | null;
+  error: string | null;
 }
 
 const initialState: FormState = {
   formData: null,
+  error: null,
 };
 
 const formState = createSlice({
@@ -18,8 +20,15 @@ const formState = createSlice({
     resetFormData: (state) => {
       state.formData = null;
     },
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
 });
 
-export const { setFormData, resetFormData } = formState.actions;
+export const { setFormData, resetFormData, setError, clearError } =
+  formState.actions;
 export default formState.reducer;

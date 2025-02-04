@@ -6,15 +6,15 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import CardAdd from '@pages/card/add';
+import Checkout from '@pages/checkout';
 import NotFound from '@pages/404';
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/card-add" replace />} />
-        <Route path="/card-add" element={<CardAdd />} />
+        <Route path="/" element={<Navigate to="/checkout" replace />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
