@@ -7,7 +7,8 @@ import { setError } from '@store/formState';
 
 import { PropsFormComp, PropsFormField } from '@components/Form/types';
 
-import Input from '@components/Form/Fields/Input';
+import FieldInput from '@components/Form/Fields/Input';
+import FieldInputCardNumber from '@components/Form/Fields/CardNumber';
 import Divide from '@components/Form/Fields/Divide';
 import Title from '@components/Form/Fields/Title';
 import FieldIcon from '@components/Form/Fields/Icon';
@@ -41,7 +42,6 @@ const Form = ({ schema, hideSubmit, onSubmit }: PropsFormComp) => {
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-    dispatch(setError('An error occurred while submitting the form.'));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -59,7 +59,18 @@ const Form = ({ schema, hideSubmit, onSubmit }: PropsFormComp) => {
         case 'email':
         case 'number':
           return (
-            <Input
+            <FieldInput
+              type={field.type}
+              id={field.name || ''}
+              name={field.name || ''}
+              value={formData[field.name || ''] || ''}
+              placeholder={field.placeholder || ''}
+              onChange={handleChange}
+            />
+          );
+        case 'card_number':
+          return (
+            <FieldInputCardNumber
               type={field.type}
               id={field.name || ''}
               name={field.name || ''}

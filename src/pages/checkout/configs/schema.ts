@@ -8,7 +8,7 @@ export const FIELDS_CARD: PropsFormField[] = [
   },
   {
     name: 'card_number',
-    type: 'text',
+    type: 'card_number',
     fieldLabel: 'Card Number',
     fieldIcon: 'camera',
   },

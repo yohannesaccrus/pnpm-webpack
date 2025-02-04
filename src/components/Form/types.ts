@@ -10,6 +10,7 @@ export type PropsFormField = {
     | 'textarea'
     | 'divide'
     | 'title'
+    | 'card_number'
     | 'custom';
   placeholder?: string;
   initialValue?: string;

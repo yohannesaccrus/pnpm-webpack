@@ -27,8 +27,9 @@
       width: 23%;
     }
 
+    &.card_number,
     &.text {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     &.last {
@@ -59,6 +60,13 @@
         font-size: .7rem;
         padding: 0 .3rem;
       }
+    }
+
+    .field-error {
+      color: rgb(216, 27, 27);
+      font-size: .9rem;
+      position: absolute;
+      bottom: -35%;
     }
   }
 
